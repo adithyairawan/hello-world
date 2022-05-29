@@ -1,0 +1,63 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hello
+  namespace: '88742715891'
+  selfLink: /apis/serving.knative.dev/v1/namespaces/88742715891/services/hello
+  uid: ab73594c-b608-4ac0-9ca1-0850e4b1d327
+  resourceVersion: AAXgJam3too
+  generation: 1
+  creationTimestamp: '2022-05-29T12:25:34.425829Z'
+  labels:
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    run.googleapis.com/client-name: cloud-console
+    serving.knative.dev/creator: adith2009@gmail.com
+    serving.knative.dev/lastModifier: adith2009@gmail.com
+    client.knative.dev/user-image: us-docker.pkg.dev/cloudrun/container/hello
+    run.googleapis.com/ingress: all
+    run.googleapis.com/ingress-status: all
+spec:
+  template:
+    metadata:
+      name: hello-00001-vew
+      annotations:
+        run.googleapis.com/client-name: cloud-console
+        autoscaling.knative.dev/maxScale: '100'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 300
+      serviceAccountName: 88742715891-compute@developer.gserviceaccount.com
+      containers:
+      - image: us-docker.pkg.dev/cloudrun/container/hello
+        ports:
+        - name: http1
+          containerPort: 8080
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 512Mi
+  traffic:
+  - percent: 100
+    latestRevision: true
+status:
+  observedGeneration: 1
+  conditions:
+  - type: Ready
+    status: 'True'
+    lastTransitionTime: '2022-05-29T12:27:29.354378Z'
+  - type: ConfigurationsReady
+    status: 'True'
+    lastTransitionTime: '2022-05-29T12:27:29.164904Z'
+  - type: RoutesReady
+    status: 'True'
+    lastTransitionTime: '2022-05-29T12:27:29.354378Z'
+  latestReadyRevisionName: hello-00001-vew
+  latestCreatedRevisionName: hello-00001-vew
+  traffic:
+  - revisionName: hello-00001-vew
+    percent: 100
+    latestRevision: true
+  url: https://hello-z6el76kshq-uc.a.run.app
+  address:
+    url: https://hello-z6el76kshq-uc.a.run.app
